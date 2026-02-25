@@ -37,28 +37,18 @@ python -m calendar_mcp.auth
 
 A browser opens for you to sign in to Google and authorize the app. The token is stored in `token.json` (gitignored). Token refresh is automatic.
 
-### 4. Cursor MCP configuration
+### 4. Cursor MCP configuration (isolated to avoid interfering with coding)
 
-Add the project to Cursor and ensure the MCP server is configured. The project includes `.cursor/mcp.json`:
+The calendar MCP is only loaded when you open the **calendar-workspace** folder. This keeps it from appearing when you're writing code.
 
-```json
-{
-  "mcpServers": {
-    "calendar-assistant": {
-      "command": "conda",
-      "args": ["run", "-n", "calendar-mcp", "python", "-m", "calendar_mcp.server"],
-      "cwd": "/path/to/assistant-agent",
-      "env": { "PYTHONPATH": "src" }
-    }
-  }
-}
-```
+- **For calendar help**: File → Open Folder → select `calendar-workspace/` (inside this repo)
+- **For coding**: File → Open Folder → select `assistant-agent/` (this repo root) — no calendar tools
 
-Update `cwd` in `.cursor/mcp.json` to the full path of this project (e.g. `/home/you/assistant-agent`). Restart Cursor after adding the server.
+Update `cwd` in `calendar-workspace/.cursor/mcp.json` to the full path of this project (e.g. `/home/you/assistant-agent`). Restart Cursor after changing folders.
 
 ### 5. Use voice or text in Cursor
 
-Ask "What do I have at 2pm?" or "Create a meeting with John tomorrow at 3pm" or "List my upcoming events". Cursor will call the MCP tools automatically.
+With `calendar-workspace` open, ask "What do I have at 2pm?" or "Create a meeting with John tomorrow at 3pm" or "List my upcoming events". Cursor will call the MCP tools automatically.
 
 ## Revoking access
 
@@ -88,5 +78,6 @@ assistant-agent/
 │   └── server.py   # FastMCP server
 ├── credentials/     # client_secret.json (gitignored)
 ├── tests/
-└── .cursor/mcp.json
+└── calendar-workspace/   # Open this folder in Cursor for calendar tools only
+    └── .cursor/mcp.json
 ```
