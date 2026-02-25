@@ -1,0 +1,13 @@
+name: calendar-mcp
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.11
+  - pip
+  - pip:
+    - pytest
+    - mcp[cli]
+    - google-api-python-client
+    - google-auth-oauthlib
+    - google-auth-httplib2

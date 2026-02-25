@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "calendar-assistant": {
+      "command": "conda",
+      "args": [
+        "run",
+        "-n",
+        "calendar-mcp",
+        "python",
+        "-m",
+        "calendar_mcp.server"
+      ],
+      "cwd": "/home/j28min/tmpstuff/assistant-agent",
+      "env": {
+        "PYTHONPATH": "src"
+      }
+    }
+  }
+}
